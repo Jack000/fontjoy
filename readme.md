@@ -51,7 +51,7 @@ The results aren't always this clean but they usually make sense.
 
 One of the more interesting problems in the design world is *font pairing*.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Unclesamwantyou.jpg" alt="Uncle sam" style="width: 200px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Unclesamwantyou.jpg" alt="Uncle sam" width="200" />
 
 Different fonts can be used to emphasize a message
 
