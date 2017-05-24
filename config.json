@@ -1,0 +1,20 @@
+{
+  "embeddings": [
+    {
+      "tensorName": "Font embeddings",
+      "tensorShape": [
+        1883,
+        25088
+      ],
+      "tensorPath": "vectors-200.tsv",
+      "metadataPath": "metadata.tsv",
+      "sprite": {
+        "imagePath": "sprite.png",
+        "singleImageDim": [
+          50,
+          50
+        ]
+      }
+    }
+  ]
+}
