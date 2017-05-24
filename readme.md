@@ -69,7 +69,7 @@ Here we reach a small issue - the metrics that are commonly used for vector comp
 
 - Hamming distance (are the vectors roughly similar?)
 
-So we have to make up our own similarity measure:
+All these are great for finding similar *or* contrasting fonts, but our ideal match has similarities and contrasts in equal measure. So we have to make up our own similarity metric:
 
 ![contrast distance](http://fontjoy.com/github/formula.png)
 
