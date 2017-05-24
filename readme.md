@@ -1,8 +1,8 @@
 # font vectors
 
->**Abstract: Font vectors are a form of transfer learning that can be used to compare visual features of fonts.**
+>**Summary: Font vectors are a form of transfer learning that can be used to create novel font combinations.**
 
->**Try the font pairing tool at http://fontjoy.com or play with the tensorboard projector at http://fontjoy.com/projector/ - I recommend the T-SNE visualization with a perplexity value of 30**
+>**Try the font pairing tool at http://fontjoy.com or play with the tensorboard projector at http://fontjoy.com/projector/ - (try T-SNE with a perplexity value of 30)**
 
 
 ![tensorboard visualization](http://fontjoy.com/github/screenshot.png)
@@ -14,7 +14,7 @@ If we use images of fonts, we get a vector that encodes the visual information o
 
 The font vector is an *abstract representation* of what the font looks like. Because it's just a vector we can use vector arithmetic to compare different fonts.
 
-You can actually do this with a couple of lines in keras:
+You can create feature vectors with a couple of lines in keras:
 
 ```
 img_path = 'elephant.jpg'
@@ -25,15 +25,16 @@ x = preprocess_input(x)
 
 features = model.predict(x)
 
+# then use PCA to reduce dimensionality
 ```
 
-For font comparison designers often use words like "Handgloves" which contain typographically distinguishing letters like e, a and n. I figured that a mnemonic word isn't necessary for a machine learning algo, so I used mixed up letters:
+For font comparison, designers often use words like "Handgloves" which contain typographically distinguishing letters like e, a and n. Since a mnemonic word isn't necessary for a machine learning algo, I used a grid of important letters:
 
 ![neural net input](http://fontjoy.com/github/input.png)
 
 I treated each variant as a separate font, so the weights can be included in the font vector. There are 1883 different fonts in the dataset (from Google webfonts)
 
-what can you use these vectors for? Well the simplest case is a visual similarity search:
+what can you use font vectors for? The simplest case is a visual similarity search:
 
 ![font similarity](http://fontjoy.com/github/similar.png)
 
@@ -47,27 +48,31 @@ it turns out you can do something similar with font vectors:
 
 ![font2vec](http://fontjoy.com/github/analogy2.png)
 
-The results aren't always this clean but they usually make sense.
+Through vector arithmetic we can isolate the features that represent visual concepts like serifs, obliqueness, and weight - or even more abstract concepts like readability, kerning and color.
 
-One of the more interesting problems in the design world is *font pairing*.
+One of the more interesting things we can do with font vectors is *font pairing*, or the problem of selecting fonts that work together in a design.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Unclesamwantyou.jpg" alt="Uncle sam" width="200" />
 
-Different fonts can be used to emphasize a message
+Contrasting fonts can be used to emphasize a message
 
 ![pairing examples](http://fontjoy.com/github/pairing.png)
 
 Or to guide the eye and create visual interest.
 
-The core process behind font pairing is somewhat paradoxical - we want fonts that contrast with each other, yet share certain similarities. How this is done in practice comes down to intuition, but we could try to narrow down the field with font vectors.
+The core process behind font pairing is somewhat paradoxical - we want fonts that contrast with each other, yet share certain similarities. Fonts that resemble each other create an uncomfortable discord, but wildly contrasting fonts look haphazard and unintentional.
 
-Here we reach a small issue - the metrics that are commonly used for vector comparison don't convey this concept well:
+![bad example](http://fontjoy.com/github/discord.png)
 
-- cosine distance (do the vectors point in the same direction?)
+Striking the right balance comes down to intuition, but we could try to narrow down the field with font vectors.
 
-- Euclidean distance (are the vectors similar in direction and magnitude?)
+Here we reach a small issue - the metrics that are commonly used for vector comparison don't convey this concept of balance very well:
 
-- Hamming distance (are the vectors roughly similar?)
+- [cosine distance](http://blog.christianperone.com/2013/09/machine-learning-cosine-similarity-for-vector-space-models-part-iii/) (do the vectors point in the same direction?)
+
+- [Euclidean distance](http://www.cut-the-knot.org/pythagoras/DistanceFormula.shtml) (are the vectors similar in direction and magnitude?)
+
+- [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) (are the vectors roughly similar?)
 
 All these are great for finding similar *or* contrasting fonts, but our ideal match has similarities and contrasts in equal measure. So we have to make up our own similarity metric:
 
@@ -81,4 +86,4 @@ The contrasting pairings that are produced in this fashion don't always work tog
 
 Another consideration for body text is legibility - many fonts that are suitable for titles aren't very readable at small sizes. To get the best balance between the 3 fonts we can try to optimize for best overall contrast, while weighing the legibility of the body font as a secondary factor.
 
-See http://fontjoy.com for a demo of this system. The raw data can be viewed through the tensorboard visualizer at http://fontjoy.com/projector/
+See http://fontjoy.com for a demo of this system. The raw data can be viewed through the tensorflow embedding projector at http://fontjoy.com/projector/
