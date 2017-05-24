@@ -4,6 +4,7 @@
 
 >**Try the font pairing tool at http://fontjoy.com or play with the tensorboard projector at http://fontjoy.com/projector/ - I recommend the T-SNE visualization with a perplexity value of 30**
 
+![tensorboard visualization](http://fontjoy.com/github/screenshot.png)
 
 Extracting feature vectors from font images isn't an entirely [new idea](https://medium.com/ideo-stories/organizing-the-world-of-fonts-with-ai-7d9e49ff2b25).
 You take some fonts, put them through a fixed feature extractor and get a representative vector on the other side. The basic idea behind this is covered in http://cs231n.github.io/transfer-learning/
@@ -27,7 +28,7 @@ For font comparison designers often use words like "Handgloves" which contain ty
 
 ![neural net input](http://fontjoy.com/github/input.png)
 
-I treated each variant as a separate font, so the weights can be included in the font vector.
+I treated each variant as a separate font, so the weights can be included in the font vector. There are 
 
 what can you use these vectors for? Well the simplest case is a visual similarity search:
 
@@ -40,4 +41,9 @@ if you've heard of word vectors, you've probably seen something like this:
 it turns out you can do something similar with font vectors:
 
 ![font2vec](http://fontjoy.com/github/analogy1.png)
+
+
+![font2vec](http://fontjoy.com/github/analogy2.png)
+
+The results aren't always this clean but they usually make sense.
 
