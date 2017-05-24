@@ -61,7 +61,7 @@ Or to guide the eye and create visual interest.
 
 The core process behind font pairing is somewhat paradoxical - we want fonts that contrast with each other, yet share certain similarities. How this is done in practice comes down to intuition, but we could try to narrow down the field with font vectors.
 
-Here we reach a small issue - the vector measures that are commonly used for vector comparison don't convey this concept well:
+Here we reach a small issue - the metrics that are commonly used for vector comparison don't convey this concept well:
 
 - cosine distance (do the vectors point in the same direction?)
 
@@ -81,4 +81,4 @@ The contrasting pairings that are produced in this fashion don't always work tog
 
 Another consideration for body text is legibility - many fonts that are suitable for titles aren't very readable at small sizes. To get the best balance between the 3 fonts we can try to optimize for best overall contrast, while weighing the legibility of the body font as a secondary factor.
 
-Try the font paring generator at http://fontjoy.com
+See http://fontjoy.com for a demo of this system. The raw data can be viewed through the tensorboard visualizer at http://fontjoy.com/projector/
