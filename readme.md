@@ -8,7 +8,7 @@
 ![tensorboard visualization](http://fontjoy.com/github/screenshot.png)
 
 Extracting feature vectors from images isn't an [entirely](http://blog.ethanrosenthal.com/2016/12/05/recasketch-keras/) new [idea](https://medium.com/ideo-stories/organizing-the-world-of-fonts-with-ai-7d9e49ff2b25).
-You take some images, put them through a fixed feature extractor and get a representative vector on the other side. The basic idea behind this is covered in http://cs231n.github.io/transfer-learning/
+You take an image, put it through a fixed feature extractor and get a representative vector on the other side. The basic idea behind this is covered in http://cs231n.github.io/transfer-learning/
 
 If we use images of fonts, we get a vector that encodes the visual information of the font.
 
@@ -48,7 +48,7 @@ it turns out you can do something similar with font vectors:
 
 ![font2vec](http://fontjoy.com/github/analogy2.png)
 
-Through vector arithmetic we can isolate the features that represent visual concepts like serifs, obliqueness, and weight - or even more abstract concepts like readability, kerning and color.
+Through vector arithmetic we can isolate the features that represent visual concepts like serifs, obliqueness, and weight - or even more abstract concepts like legibility, kerning and color.
 
 One of the more interesting things we can do with font vectors is *font pairing*, or the problem of selecting fonts that work together in a design.
 
